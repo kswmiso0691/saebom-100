@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<meta name="description" content="2026년 11월 21일 토요일 오후 4시 · 이안블리스">
+<!-- 카카오톡 미리보기: 인터넷에 올린 뒤 og:image 와 og:url 을 실제 주소(https://...)로 바꿔야 썸네일이 나옵니다 -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kswmiso0691.github.io/saebom-100/">
+<meta property="og:title" content="김새봄 백일잔치에 초대합니다">
+<meta property="og:description" content="2026년 11월 21일 토요일 오후 4시 · 이안블리스">
+<meta property="og:image" content="https://kswmiso0691.github.io/saebom-100/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- page:start -->
+<title>새봄이 백일 초대장</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='%23EFC9C3'%3E%3Ccircle cx='16' cy='9.5' r='5'/%3E%3Ccircle cx='22.2' cy='14' r='5'/%3E%3Ccircle cx='19.8' cy='21.3' r='5'/%3E%3Ccircle cx='12.2' cy='21.3' r='5'/%3E%3Ccircle cx='9.8' cy='14' r='5'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%23B5776F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap">
+<style>
+/* 레이아웃: 휴대폰은 종이 한 장(최대 560px)을 세로로 넘기는 초대장.
+   태블릿·PC(768px 이상, 화면 높이 520px 이상)는 왼쪽에 표지 사진을 고정하고 오른쪽 내용만 스크롤.
+   '새봄이의 백 일'은 새싹 → 잎 → 꽃으로 자라는 줄기를 따라 사진을 날짜순으로 놓는다 */
+:root{
+  --ground:#F2EBE2;     /* 종이 바깥 */
+  --paper:#FFFDFA;      /* 종이 */
+  --ink:#463730;        /* 글씨 */
+  --ink-soft:#85715F;   /* 보조 글씨 */
+  --line:#E9DFD3;       /* 선·테두리 */
+  --rose:#B5776F;       /* 숫자·강조 */
+  --blush:#EFC9C3;      /* 꽃잎 */
+  --blush-soft:#FBEFEC; /* 띠 배경 */
+  --sprout:#8FA67C;     /* 새싹 */
+  --night:#211915;      /* 사진 크게 보기 배경 */
+  --font-display:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
+  --font-body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-num:"Cormorant Garamond","Gowun Batang",Georgia,serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--ground);scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+
+.layout{max-width:560px;margin:0 auto;background:var(--paper)}
+@media (min-width:600px){
+  .layout{margin-block:32px;box-shadow:0 1px 2px color-mix(in srgb,var(--ink) 8%,transparent),0 16px 48px color-mix(in srgb,var(--ink) 12%,transparent)}
+}
+.sec{padding-block:64px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.ruled{border-top:1px solid var(--line)}
+.band{background:var(--blush-soft)}
+
+.sec-title{margin:0 0 32px;text-align:center;font-family:var(--font-display);font-weight:700;font-size:22px;line-height:1.4;text-wrap:balance}
+.sec-title small{display:block;margin-bottom:2px;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:18px;letter-spacing:.04em;color:var(--rose)}
+.lead{margin:-16px 0 36px;text-align:center;font-size:15px;color:var(--ink-soft)}
+
+/* 표지 */
+.hero{position:relative}
+.hero-photo{width:100%;height:auto;aspect-ratio:933/1400;object-fit:cover}
+.hero-text{position:absolute;inset:0 0 auto;text-align:center;padding-top:clamp(24px,8vw,40px);padding-bottom:24px;
+  padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));
+  background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 75%,transparent),transparent)}
+.hero-eyebrow{margin:0;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:17px;letter-spacing:.08em;color:var(--ink-soft)}
+.hero-100{margin:0;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:clamp(68px,22vw,96px);line-height:.92;color:var(--rose)}
+.hero h1{margin:8px 0 0;font-family:var(--font-display);font-weight:700;font-size:clamp(20px,6vw,25px);line-height:1.45}
+.hero-meta{padding-block:32px 0;text-align:center}
+.hero-meta p{margin:0}
+.hero-meta .when{font-family:var(--font-display);font-size:18px}
+.hero-meta .where{color:var(--ink-soft)}
+
+/* 인사말 */
+.greet{text-align:center}
+.ornament{display:block;width:30px;height:30px;margin:0 auto 28px}
+.greet p{margin:0 0 20px;font-size:16.5px}
+.greet p.parents{margin:36px 0 0;font-family:var(--font-display);font-size:18px}
+.parents span{margin-right:6px;font-family:var(--font-body);font-size:14px;color:var(--ink-soft)}
+.parents i{margin:0 12px;font-style:normal;color:var(--blush)}
+
+/* 잔치 날 */
+.big-date{margin:0 0 28px;text-align:center;font-family:var(--font-display);font-size:20px;line-height:1.6}
+.big-date span{display:block;font-family:var(--font-body);font-size:16px;color:var(--ink-soft)}
+.cal{max-width:340px;margin:0 auto;padding:20px 12px 16px;background:var(--paper);border-radius:2px}
+.cal-month{margin:0 0 6px;text-align:center;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:22px;color:var(--rose)}
+.cal table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:15px;font-variant-numeric:tabular-nums}
+.cal th{padding:4px 0 6px;font-weight:400;font-size:12px;color:var(--ink-soft)}
+.cal td{height:42px;padding:0;text-align:center;vertical-align:middle}
+.cal .sun{color:var(--rose)}
+.cal td span{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%}
+.cal .d100 span{box-shadow:inset 0 0 0 1.5px var(--rose);color:var(--rose)}
+.cal .party span{background:var(--ink);color:var(--paper)}
+.cal-legend{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin:8px 0 0;font-size:13px;color:var(--ink-soft)}
+.cal-legend span{display:inline-flex;align-items:center;gap:6px}
+.cal-legend i{display:inline-block;width:12px;height:12px;border-radius:50%}
+.cal-legend .k100{box-shadow:inset 0 0 0 1.5px var(--rose)}
+.cal-legend .kparty{background:var(--ink)}
+.dday{margin:28px 0 16px;text-align:center;font-size:16px}
+.dday b{margin:0 3px;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:30px;line-height:1;color:var(--rose)}
+
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font:inherit;font-size:15px;line-height:1.3;text-decoration:none;cursor:pointer}
+.btn:hover{border-color:var(--rose)}
+.btn-dark{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn-dark:hover{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 88%,var(--paper))}
+.btn-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.btn-small{min-height:36px;padding:0 14px;font-size:13px}
+
+/* 오시는 길 */
+.venue{margin:0;text-align:center;font-family:var(--font-display);font-weight:700;font-size:23px}
+.addr{margin:4px 0 12px;text-align:center;color:var(--ink-soft)}
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:24px}
+.info{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 20px;margin:24px 0 0;padding:18px 20px;border:1px solid var(--line);border-radius:2px}
+.info dt{color:var(--ink-soft);font-size:14px;line-height:1.8}
+.info dd{margin:0}
+
+/* 새봄이의 백 일: 줄기 타임라인 + 날짜순 사진 */
+.stem{position:relative;display:grid;gap:48px;margin:0;padding:0;list-style:none}
+.stem::before{content:"";position:absolute;left:19px;top:20px;bottom:20px;width:2px;border-radius:2px;background:linear-gradient(var(--sprout),var(--sprout) 55%,var(--blush))}
+.node{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start}
+.node-mark{position:relative;z-index:1;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--paper);border:1.5px solid var(--line)}
+.node-mark svg{width:24px;height:24px}
+.node-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 10px;min-height:40px;padding-top:4px;margin-bottom:12px}
+.node-head h3{margin:0;font-family:var(--font-display);font-weight:700;font-size:19px;line-height:1.6}
+.node-head p{margin:0;font-size:13.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.tile{position:relative;display:block;width:100%;aspect-ratio:1;padding:0;border:0;border-radius:2px;overflow:hidden;background:var(--line);cursor:zoom-in}
+.tile.wide{grid-column:1 / -1;aspect-ratio:3/2}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.tile:hover img{transform:scale(1.03)}
+.chip{position:absolute;left:6px;bottom:6px;padding:0 8px;border-radius:999px;background:color-mix(in srgb,var(--paper) 88%,transparent);color:var(--ink);font-size:12px;line-height:1.75;font-variant-numeric:tabular-nums}
+.node-empty{display:grid;place-items:center;aspect-ratio:2/1;padding:16px;border:1.5px dashed var(--blush);border-radius:2px;background:var(--blush-soft);text-align:center;font-size:15px;line-height:1.7;color:var(--rose)}
+.today{margin:44px 0 0;text-align:center;font-size:15px;color:var(--ink-soft)}
+.today b{font-weight:inherit;color:var(--ink)}
+
+/* 사진 크게 보기 */
+.viewer{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:0;border:0;background:var(--night);color:var(--paper)}
+.viewer::backdrop{background:var(--night)}
+.viewer-inner{display:grid;grid-template-rows:auto minmax(0,1fr) auto;height:100%;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 20px;font-size:14px;font-variant-numeric:tabular-nums}
+.viewer-cap b{margin-right:6px;font-family:var(--font-num);font-style:italic;font-weight:500;font-size:22px;color:var(--blush)}
+.viewer-cap span{opacity:.75}
+.viewer-stage{display:grid;place-items:center;min-height:0;padding:0 8px}
+.viewer-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.viewer-nav{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px;font-size:14px;font-variant-numeric:tabular-nums}
+.icon-btn{display:grid;place-items:center;width:48px;height:48px;border:0;border-radius:50%;background:color-mix(in srgb,var(--paper) 12%,transparent);color:var(--paper);font:inherit;font-size:20px;cursor:pointer}
+.icon-btn:hover{background:color-mix(in srgb,var(--paper) 22%,transparent)}
+
+/* 참석 여부 안내 */
+.reply-note{max-width:340px;margin:28px auto 0;padding:16px 20px;border-radius:2px;background:var(--paper);text-align:center;font-size:15px;line-height:1.75}
+.reply-note b{font-weight:inherit;color:var(--rose)}
+
+/* 마무리 */
+.closing{text-align:center}
+.closing-photo{width:100%;max-width:440px;aspect-ratio:4/5;object-fit:cover;object-position:50% 70%;margin:0 auto 36px;border-radius:2px}
+.closing p{margin:0 0 8px}
+.closing p.sign{margin-top:20px;font-family:var(--font-display);font-size:17px}
+.closing .btn-row{margin-top:36px}
+
+/* 태블릿·PC: 왼쪽 표지 고정 + 오른쪽 내용. 띠 배경은 오른쪽 칸 끝까지, 글은 가운데 560px 안에 */
+@media (min-width:768px) and (min-height:520px){
+  body{background:var(--paper);font-size:17px}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,1fr);align-items:start;max-width:none;margin:0;box-shadow:none}
+  .hero{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden}
+  .hero-photo{height:100%;aspect-ratio:auto;object-position:45% 42%}
+  .hero-text{padding-top:clamp(40px,9vh,104px);padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:32px}
+  .hero-eyebrow{font-size:clamp(17px,1.5vw,22px)}
+  .hero-100{font-size:clamp(84px,9.5vw,150px)}
+  .hero h1{font-size:clamp(22px,2.3vw,34px)}
+  .content{min-width:0}
+  .sec{padding-block:80px;
+    padding-left:max(32px,calc((100% - 560px) / 2));
+    padding-right:max(32px,calc((100% - 560px) / 2),env(safe-area-inset-right,0px))}
+  .hero-meta{padding-block:64px 0}
+  .hero-meta .when{font-size:20px}
+  .sec-title{font-size:25px}
+  .greet p{font-size:17.5px}
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}}
+</style>
+<!-- page:head-end -->
+</head>
+<body>
+<div class="layout">
+
+  <header class="hero">
+    <img class="hero-photo" src="img/photos/1001-151018.jpg" alt="흰 레이스 보닛을 쓰고 누워 있는 새봄이" width="933" height="1400">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Kim Saebom</p>
+      <p class="hero-100">100</p>
+      <h1>새봄이의 백일에<br>초대합니다</h1>
+    </div>
+  </header>
+
+  <main class="content">
+
+  <div class="sec hero-meta">
+    <p class="when">2026년 11월 21일 토요일 오후 4시</p>
+    <p class="where">이안블리스</p>
+  </div>
+
+  <section class="sec greet" aria-label="인사말">
+    <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true">
+      <g fill="var(--blush)"><circle cx="16" cy="9.5" r="4.6"/><circle cx="22.2" cy="14" r="4.6"/><circle cx="19.8" cy="21.3" r="4.6"/><circle cx="12.2" cy="21.3" r="4.6"/><circle cx="9.8" cy="14" r="4.6"/></g>
+      <circle cx="16" cy="16" r="3" fill="var(--rose)"/>
+    </svg>
+    <p>지난 8월 11일,<br>새봄이가 저희 곁에 왔습니다.</p>
+    <p>가족들이 보내 주신 사랑 덕분에<br>건강하게 자라 백 일을 맞았습니다.</p>
+    <p>감사한 마음을 담아<br>작은 자리를 마련했습니다.<br>오셔서 새봄이의 백일을<br>함께 축하해 주세요.</p>
+    <p class="parents"><span>아빠</span>김상우<i>·</i><span>엄마</span>신아영</p>
+  </section>
+
+  <section class="sec band" aria-labelledby="date-title">
+    <h2 class="sec-title" id="date-title"><small>Date</small>잔치 날</h2>
+    <p class="big-date">2026년 11월 21일 토요일<span>오후 4시 ~ 7시</span></p>
+    <div class="cal">
+      <p class="cal-month">November 2026</p>
+      <table>
+        <thead><tr><th class="sun">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>
+        <tbody>
+          <tr><td class="sun"><span>1</span></td><td><span>2</span></td><td><span>3</span></td><td><span>4</span></td><td><span>5</span></td><td><span>6</span></td><td><span>7</span></td></tr>
+          <tr><td class="sun"><span>8</span></td><td><span>9</span></td><td><span>10</span></td><td><span>11</span></td><td><span>12</span></td><td><span>13</span></td><td><span>14</span></td></tr>
+          <tr><td class="sun"><span>15</span></td><td><span>16</span></td><td><span>17</span></td><td class="d100"><span aria-label="18일, 100일">18</span></td><td><span>19</span></td><td><span>20</span></td><td class="party"><span aria-label="21일, 백일잔치">21</span></td></tr>
+          <tr><td class="sun"><span>22</span></td><td><span>23</span></td><td><span>24</span></td><td><span>25</span></td><td><span>26</span></td><td><span>27</span></td><td><span>28</span></td></tr>
+          <tr><td class="sun"><span>29</span></td><td><span>30</span></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="cal-legend"><span><i class="k100"></i>100일 (18일)</span><span><i class="kparty"></i>잔치 (21일)</span></p>
+    </div>
+    <p class="dday" id="dday">잔치까지 <b>25</b>일 남았습니다</p>
+    <div class="btn-row">
+      <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=새봄이%20백일잔치&amp;dates=20261121T160000/20261121T190000&amp;ctz=Asia/Seoul&amp;location=이안블리스%20(경기%20수원시%20팔달구%20향교로%20115-26)" target="_blank" rel="noopener">구글 캘린더에 추가</a>
+    </div>
+    <p class="reply-note">식사 준비를 위해 <b>11월 14일(토)</b>까지<br>참석 여부를 엄마나 아빠에게 알려 주세요.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="place-title">
+    <h2 class="sec-title" id="place-title"><small>Location</small>오시는 길</h2>
+    <p class="venue">이안블리스</p>
+    <p class="addr" id="addr">경기 수원시 팔달구 향교로 115-26</p>
+    <div class="btn-row"><button class="btn btn-small" type="button" id="copy-addr">주소 복사</button></div>
+    <div class="maps">
+      <a class="btn" href="https://map.naver.com/p/search/경기%20수원시%20팔달구%20향교로%20115-26" target="_blank" rel="noopener">네이버 지도</a>
+      <a class="btn" href="https://map.kakao.com/link/search/경기%20수원시%20팔달구%20향교로%20115-26" target="_blank" rel="noopener">카카오맵</a>
+    </div>
+    <dl class="info">
+      <dt>시간</dt><dd>오후 4시 ~ 7시</dd>
+      <dt>주차</dt><dd>주차 가능합니다</dd>
+    </dl>
+  </section>
+
+  <section class="sec ruled" aria-labelledby="grow-title">
+    <h2 class="sec-title" id="grow-title"><small>First 100 days</small>새봄이의 백 일</h2>
+    <p class="lead">태어난 날부터 날짜 순서대로 모았습니다.<br>사진을 누르면 크게 볼 수 있습니다.</p>
+    <ol class="stem" id="album"></ol>
+    <p class="today" id="today">오늘은 새봄이가 태어난 지 <b>…</b>일째 되는 날입니다.</p>
+  </section>
+
+  <footer class="sec ruled closing">
+    <img class="closing-photo" src="img/photos/1001-151251.jpg" alt="엄마 아빠가 새봄이를 안고 찍은 가족사진" loading="lazy">
+    <p>새봄이를 아껴 주시는 마음에<br>늘 감사드립니다.</p>
+    <p class="sign">김상우 · 신아영 · 새봄 드림</p>
+    <div class="btn-row"><button class="btn" type="button" id="copy-link">초대장 링크 복사</button></div>
+  </footer>
+
+  </main>
+</div>
+
+<dialog class="viewer" id="viewer" aria-label="사진 크게 보기">
+  <div class="viewer-inner">
+    <div class="viewer-bar"><p class="viewer-cap" id="viewer-cap" style="margin:0"></p><button class="icon-btn" type="button" id="viewer-close" aria-label="닫기">✕</button></div>
+    <div class="viewer-stage"><img id="viewer-img" src="" alt=""></div>
+    <div class="viewer-nav">
+      <button class="icon-btn" type="button" id="viewer-prev" aria-label="이전 사진">‹</button>
+      <span id="viewer-count">1 / 1</span>
+      <button class="icon-btn" type="button" id="viewer-next" aria-label="다음 사진">›</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  // 사진 앨범: 파일 이름이 촬영 날짜·시각(월일-시분초)입니다. 순서대로 나옵니다.
+  // wide: 두 칸 너비로 크게, pos: 네모로 자를 때 보여 줄 위치(가로 세로)
+  const ALBUM = [
+    { title: '태어난 날', range: '1~2일 · 8. 11 ~ 8. 12', icon: 'seed', photos: [
+      { f: '0811-171359', wide: true, pos: '40% 50%' },
+      { f: '0812-100153', pos: '50% 45%' },
+      { f: '0812-141240', pos: '50% 62%' },
+      { f: '0812-202226', wide: true, pos: '45% 50%' } ] },
+    { title: '열흘', range: '9~10일 · 8. 19 ~ 8. 20', icon: 'seed', photos: [
+      { f: '0819-191437', pos: '50% 40%' },
+      { f: '0819-191452', pos: '50% 40%' },
+      { f: '0820-073707', pos: '50% 30%' },
+      { f: '0820-142956', pos: '50% 28%' },
+      { f: '0820-143357', pos: '50% 40%' },
+      { f: '0820-143504', pos: '50% 45%' } ] },
+    { title: '한 달', range: '20~38일 · 8. 30 ~ 9. 17', icon: 'leaf', photos: [
+      { f: '0830-133040', pos: '55% 65%' },
+      { f: '0905-120422', pos: '50% 72%' },
+      { f: '0909-133533', wide: true, pos: '50% 50%' },
+      { f: '0909-205001', pos: '50% 60%' },
+      { f: '0917-161921', pos: '50% 40%' } ] },
+    { title: '50일', range: '51~53일 · 9. 30 ~ 10. 2', icon: 'leaf', photos: [
+      { f: '0930-083128', pos: '50% 50%' },
+      { f: '1001-105143', pos: '50% 40%' },
+      { f: '1001-145613', wide: true, pos: '60% 55%' },
+      { f: '1001-150058', wide: true, pos: '45% 50%' },
+      { f: '1001-151018', pos: '45% 55%' },
+      { f: '1001-151251', pos: '50% 62%' },
+      { f: '1001-151849', pos: '58% 50%' },
+      { f: '1002-095657', pos: '50% 40%' } ] },
+    { title: '두 달', range: '60~77일 · 10. 9 ~ 10. 26', icon: 'bud', photos: [
+      { f: '1009-131430', pos: '50% 40%' },
+      { f: '1009-145247', pos: '50% 45%' },
+      { f: '1009-194643', pos: '50% 55%' },
+      { f: '1011-205517', pos: '50% 60%' },
+      { f: '1012-151511', wide: true, pos: '45% 50%' },
+      { f: '1014-190628', pos: '50% 45%' },
+      { f: '1016-094956', pos: '50% 40%' },
+      { f: '1025-131325', pos: '50% 35%' },
+      { f: '1026-163805', pos: '50% 40%' } ] },
+    { title: '백일', range: '100일 · 11. 18', icon: 'blossom', empty: '100일 사진은<br>잔치 날 보여 드리겠습니다' }
+  ];
+
+  const ICONS = {
+    seed: '<path d="M12 20v-7" stroke="var(--sprout)" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M12 14c-.3-3.4-2.6-5.6-6.6-5.6.2 3.5 2.6 5.6 6.6 5.6z" fill="var(--sprout)"/><path d="M12 12.4c.2-3 2.3-5 5.9-5-.1 3.1-2.3 5-5.9 5z" fill="var(--sprout)"/>',
+    leaf: '<path d="M12 21V5" stroke="var(--sprout)" stroke-width="1.8" stroke-linecap="round" fill="none"/><g fill="var(--sprout)"><path d="M12 17c-.3-3-2.3-4.9-5.8-4.9.2 3 2.3 4.9 5.8 4.9z"/><path d="M12 13.5c.3-3 2.3-4.9 5.8-4.9-.2 3-2.3 4.9-5.8 4.9z"/><path d="M12 9.6c-.2-2.4-1.8-3.9-4.6-3.9.1 2.4 1.8 3.9 4.6 3.9z"/></g>',
+    bud: '<path d="M12 21V6" stroke="var(--sprout)" stroke-width="1.8" stroke-linecap="round" fill="none"/><g fill="var(--sprout)"><path d="M12 17c-.3-3-2.3-4.9-5.8-4.9.2 3 2.3 4.9 5.8 4.9z"/><path d="M12 13.5c.3-3 2.3-4.9 5.8-4.9-.2 3-2.3 4.9-5.8 4.9z"/></g><circle cx="12" cy="5" r="2.4" fill="var(--blush)"/>',
+    blossom: '<g fill="var(--blush)"><circle cx="12" cy="6.6" r="3.6"/><circle cx="17.1" cy="10.3" r="3.6"/><circle cx="15.2" cy="16.4" r="3.6"/><circle cx="8.8" cy="16.4" r="3.6"/><circle cx="6.9" cy="10.3" r="3.6"/></g><circle cx="12" cy="12" r="2.4" fill="var(--rose)"/>'
+  };
+
+  const DAY = 86400000;
+  const dayOf = (y, m, d) => Math.floor(Date.UTC(y, m - 1, d) / DAY);
+  const today = Math.floor((Date.now() + 9 * 3600000) / DAY); // 한국 시간 기준 날짜
+  const BIRTH = dayOf(2026, 8, 11);
+  const PARTY = dayOf(2026, 11, 21);
+  const photoMonth = (f) => +f.slice(0, 2);
+  const photoDate = (f) => +f.slice(2, 4);
+  const photoAge = (f) => dayOf(2026, photoMonth(f), photoDate(f)) - BIRTH + 1; // 태어난 날 = 1일
+
+  // 앨범 그리기
+  const album = document.getElementById('album');
+  const shots = [];
+  ALBUM.forEach((g) => {
+    const li = document.createElement('li');
+    li.className = 'node';
+    let body = '<div class="node-head"><h3>' + g.title + '</h3><p>' + g.range + '</p></div>';
+    if (g.empty) {
+      body += '<div class="node-empty">' + g.empty + '</div>';
+    } else {
+      body += '<div class="tiles">' + g.photos.map((p) => {
+        const i = shots.push(p) - 1;
+        const age = photoAge(p.f);
+        const src = (p.wide ? 'img/photos/' : 'img/thumbs/') + p.f + '.jpg';
+        const alt = photoMonth(p.f) + '월 ' + photoDate(p.f) + '일, 태어난 지 ' + age + '일째 새봄이';
+        return '<button type="button" class="tile' + (p.wide ? ' wide' : '') + '" data-i="' + i + '">' +
+          '<img src="' + src + '" alt="' + alt + '" loading="lazy" style="object-position:' + (p.pos || '50% 45%') + '">' +
+          '<span class="chip">' + age + '일</span></button>';
+      }).join('') + '</div>';
+    }
+    li.innerHTML = '<div class="node-mark" aria-hidden="true"><svg viewBox="0 0 24 24">' + ICONS[g.icon] + '</svg></div><div>' + body + '</div>';
+    album.appendChild(li);
+  });
+
+  // 태어난 지 며칠째
+  const age = today - BIRTH + 1;
+  const todayEl = document.getElementById('today');
+  if (age >= 1) todayEl.querySelector('b').textContent = age;
+  else todayEl.hidden = true;
+
+  const left = PARTY - today;
+  const dday = document.getElementById('dday');
+  if (left > 0) dday.innerHTML = '잔치까지 <b>' + left + '</b>일 남았습니다';
+  else if (left === 0) dday.textContent = '오늘이 새봄이 백일잔치 날입니다';
+  else dday.textContent = '함께해 주셔서 고맙습니다';
+
+  // 복사
+  function copy(text, btn, selectEl) {
+    const label = btn.textContent;
+    const done = (msg) => { btn.textContent = msg; setTimeout(() => { btn.textContent = label; }, 2000); };
+    const fallback = () => {
+      if (selectEl) {
+        const r = document.createRange(); r.selectNodeContents(selectEl);
+        const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      }
+      done('길게 눌러 복사해 주세요');
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => done('복사했습니다'), fallback);
+    } catch (e) { fallback(); }
+  }
+  const addr = document.getElementById('addr');
+  document.getElementById('copy-addr').addEventListener('click', (e) => copy(addr.textContent, e.currentTarget, addr));
+  document.getElementById('copy-link').addEventListener('click', (e) => copy(location.href.split('#')[0], e.currentTarget, null));
+
+  // 사진 크게 보기
+  const viewer = document.getElementById('viewer');
+  const vImg = document.getElementById('viewer-img');
+  const vCap = document.getElementById('viewer-cap');
+  const vCount = document.getElementById('viewer-count');
+  let idx = 0;
+  function show(i) {
+    idx = (i + shots.length) % shots.length;
+    const f = shots[idx].f;
+    vImg.src = 'img/photos/' + f + '.jpg';
+    vImg.alt = photoMonth(f) + '월 ' + photoDate(f) + '일 사진';
+    vCap.innerHTML = '<b>' + photoAge(f) + '일</b><span>' + photoMonth(f) + '월 ' + photoDate(f) + '일</span>';
+    vCount.textContent = (idx + 1) + ' / ' + shots.length;
+  }
+  album.addEventListener('click', (e) => {
+    const tile = e.target.closest('.tile');
+    if (!tile) return;
+    show(+tile.dataset.i);
+    if (viewer.showModal) viewer.showModal(); else viewer.setAttribute('open', '');
+  });
+  const close = () => { if (viewer.close) viewer.close(); else viewer.removeAttribute('open'); };
+  document.getElementById('viewer-close').addEventListener('click', close);
+  document.getElementById('viewer-prev').addEventListener('click', () => show(idx - 1));
+  document.getElementById('viewer-next').addEventListener('click', () => show(idx + 1));
+  viewer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  let x0 = null;
+  vImg.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  vImg.addEventListener('touchend', (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+
+})();
+</script>
+</body>
+</html>
