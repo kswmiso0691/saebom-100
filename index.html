@@ -161,6 +161,23 @@ img{max-width:100%;display:block}
 .closing p{margin:0 0 8px}
 .closing p.sign{margin-top:20px;font-family:var(--font-display);font-size:17px}
 .closing .btn-row{margin-top:36px}
+.sec.closing{padding-bottom:128px} /* 오른쪽 아래 음악 버튼에 가리지 않게 */
+
+/* 배경음악 버튼 */
+.bgm{position:fixed;z-index:20;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 15px;border:1px solid var(--line);border-radius:999px;
+  background:color-mix(in srgb,var(--paper) 90%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--ink);font:inherit;font-size:14px;line-height:1;cursor:pointer;box-shadow:0 6px 20px color-mix(in srgb,var(--ink) 14%,transparent)}
+.bgm:hover{border-color:var(--rose)}
+.bgm-icon{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
+.bgm-icon i{display:block;width:3px;height:6px;border-radius:2px;background:var(--rose)}
+.bgm-icon i:nth-child(2){height:11px}
+.bgm-icon i:nth-child(3){height:8px}
+.bgm[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.bgm[aria-pressed="true"] .bgm-icon i{background:var(--blush);animation:bgm-bar 1.2s ease-in-out infinite}
+.bgm[aria-pressed="true"] .bgm-icon i:nth-child(2){animation-delay:-.4s}
+.bgm[aria-pressed="true"] .bgm-icon i:nth-child(3){animation-delay:-.8s}
+@keyframes bgm-bar{0%,100%{height:4px}50%{height:14px}}
 
 /* 태블릿·PC: 왼쪽 표지 고정 + 오른쪽 내용. 띠 배경은 오른쪽 칸 끝까지, 글은 가운데 560px 안에 */
 @media (min-width:768px) and (min-height:520px){
@@ -182,7 +199,7 @@ img{max-width:100%;display:block}
   .greet p{font-size:17.5px}
 }
 
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}.bgm[aria-pressed="true"] .bgm-icon i{animation:none}}
 </style>
 <!-- page:head-end -->
 </head>
@@ -271,6 +288,11 @@ img{max-width:100%;display:block}
 
   </main>
 </div>
+
+<button class="bgm" id="bgm" type="button" aria-pressed="false" title="오르골 자장가: 브람스 자장가, 반짝반짝 작은 별">
+  <span class="bgm-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span id="bgm-label">자장가 켜기</span>
+</button>
 
 <dialog class="viewer" id="viewer" aria-label="사진 크게 보기">
   <div class="viewer-inner">
@@ -437,6 +459,181 @@ img{max-width:100%;display:block}
     x0 = null;
   });
 
+})();
+</script>
+<script>
+// bgm:start
+// 오르골 자장가: 저작권이 끝난 브람스 자장가(1868)와 '반짝반짝 작은 별' 멜로디를
+// 브라우저가 오르골 소리로 직접 연주합니다. 음원 파일이 없어 용량이 늘지 않습니다.
+function createMusicBox(ctx) {
+  const STEP = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+  const freq = (n) => 440 * Math.pow(2, (12 * (Number(n.slice(1)) + 1) + STEP[n[0]] - 69) / 12);
+  const parse = (s) => s.trim().split(/\s+/).map((t) => { const [n, b] = t.split(':'); return [n, Number(b)]; });
+  // 반주 화음: [밑음, 5도, 3도(또는 7음)]
+  const CHORDS = { C: ['C3', 'G3', 'E4'], F: ['F3', 'C4', 'A4'], G: ['G3', 'D4', 'B4'], G7: ['G3', 'D4', 'F4'] };
+
+  // 멜로디는 '음:박' (0.5 = 8분음표), 화음은 마디(또는 두 박)마다 하나
+  const SONGS = [
+    { name: '브람스 자장가', bpm: 66, meter: 3, pickup: 1, chordBeats: 3,
+      melody: parse(`E5:.5 E5:.5  G5:1.5 E5:.5 E5:1  G5:2 E5:.5 G5:.5  C6:1 B5:1.5 A5:.5  A5:1 G5:1 D5:.5 E5:.5
+        F5:1 D5:1 D5:.5 E5:.5  F5:2 D5:.5 F5:.5  B5:.5 A5:.5 G5:1 B5:1  C6:2 C5:.5 C5:.5
+        C6:2 A5:.5 F5:.5  G5:2 E5:.5 C5:.5  F5:1 G5:1 A5:1  G5:2 C5:.5 C5:.5
+        C6:2 A5:.5 F5:.5  G5:2 E5:.5 C5:.5  F5:1 E5:1 D5:1  C5:3`),
+      chords: 'C C G7 C G7 G7 G7 C F C G7 C F C G7 C' },
+    { name: '반짝반짝 작은 별', bpm: 80, meter: 4, pickup: 0, chordBeats: 2,
+      melody: parse(`C5:1 C5:1 G5:1 G5:1 A5:1 A5:1 G5:2  F5:1 F5:1 E5:1 E5:1 D5:1 D5:1 C5:2
+        G5:1 G5:1 F5:1 F5:1 E5:1 E5:1 D5:2  G5:1 G5:1 F5:1 F5:1 E5:1 E5:1 D5:2
+        C5:1 C5:1 G5:1 G5:1 A5:1 A5:1 G5:2  F5:1 F5:1 E5:1 E5:1 D5:1 D5:1 C5:2`),
+      chords: 'C C F C F C G C C F C G C F C G C C F C F C G C' }
+  ];
+
+  function toEvents(song) {
+    const list = [];
+    let beat = 0;
+    for (const [n, b] of song.melody) {
+      const onDownbeat = Math.abs(((beat - song.pickup) % song.meter + song.meter) % song.meter) < 1e-6;
+      list.push([beat, n, onDownbeat ? 0.8 : 0.68]);
+      beat += b;
+    }
+    song.chords.split(' ').forEach((c, i) => {
+      const t = song.pickup + i * song.chordBeats;
+      const [root, fifth, third] = CHORDS[c];
+      list.push([t, root, 0.36]);
+      if (song.chordBeats === 3) { list.push([t + 1, fifth, 0.18], [t + 2, third, 0.18]); }
+      else { list.push([t + 1, fifth, 0.16], [t + 1, third, 0.14]); }
+    });
+    list.sort((a, b) => a[0] - b[0]);
+    return { list, length: beat };
+  }
+  const prepared = SONGS.map(toEvents);
+
+  // 소리 경로: 음 → (잔향) → 부드럽게 깎기 → 크기 조절 → 스피커
+  const voices = ctx.createGain(); voices.gain.value = 0.3;
+  const dry = ctx.createGain(); dry.gain.value = 0.8;
+  const wet = ctx.createGain(); wet.gain.value = 0.35;
+  const verb = ctx.createConvolver();
+  const tone = ctx.createBiquadFilter(); tone.type = 'lowpass'; tone.frequency.value = 6500;
+  const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+  const master = ctx.createGain(); master.gain.value = 0.95;
+  const len = Math.floor(ctx.sampleRate * 2.4);
+  const ir = ctx.createBuffer(2, len, ctx.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = ir.getChannelData(ch);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+  }
+  verb.buffer = ir;
+  voices.connect(dry); voices.connect(verb); verb.connect(wet);
+  dry.connect(tone); wet.connect(tone); tone.connect(comp); comp.connect(master); master.connect(ctx.destination);
+
+  // 오르골 한 음: 기본음 + 살짝 어긋난 음(반짝임) + 배음 + 쇠 빗살 특유의 높은 '팅' 소리
+  const PARTIALS = [[1, 1, 1], [1.0035, 0.22, 0.85], [2, 0.12, 0.45], [6.27, 0.07, 0.12]];
+  function pluck(t, f, vel) {
+    const ring = Math.min(3, Math.max(0.9, 1.9 * Math.pow(523 / f, 0.45))); // 낮은 음일수록 길게
+    for (const [ratio, amp, decay] of PARTIALS) {
+      const fr = f * ratio;
+      if (fr > 9000) continue;
+      const end = t + 0.005 + ring * decay * 2;
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.frequency.value = fr;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(amp * vel, t + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, end);
+      o.connect(g); g.connect(voices);
+      o.start(t); o.stop(end + 0.02);
+    }
+  }
+
+  const GAP = 2.5; // 곡 사이 쉬는 시간(초)
+  let songIdx = 0, idx = 0, start = 0;
+  return {
+    master,
+    reset(at) { songIdx = 0; idx = 0; start = at; },
+    // until 시각까지 칠 음을 미리 예약 (곡이 끝나면 다음 곡, 끝없이 반복)
+    schedule(until) {
+      for (;;) {
+        const song = SONGS[songIdx], ev = prepared[songIdx], spb = 60 / song.bpm;
+        if (idx >= ev.list.length) {
+          start += ev.length * spb + GAP;
+          songIdx = (songIdx + 1) % SONGS.length;
+          idx = 0;
+          continue;
+        }
+        const [beat, n, vel] = ev.list[idx];
+        const t = start + beat * spb;
+        if (t > until) return;
+        pluck(Math.max(t + (Math.random() - 0.5) * 0.012, ctx.currentTime), freq(n), vel * (0.94 + Math.random() * 0.12));
+        idx++;
+      }
+    }
+  };
+}
+// bgm:end
+
+(() => {
+  const btn = document.getElementById('bgm');
+  const label = document.getElementById('bgm-label');
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) { btn.hidden = true; return; }
+
+  const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  let ctx = null, box = null, timer = null, playing = false, keepAlive = null;
+
+  function setUi(on) {
+    playing = on;
+    btn.setAttribute('aria-pressed', String(on));
+    label.textContent = on ? '자장가 끄기' : '자장가 켜기';
+  }
+
+  // 옛 아이폰에서 무음 모드여도 들리게 하는 아주 짧은 무음 파일
+  function silentWav() {
+    const n = 4410, buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+    const w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+    w(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); w(8, 'WAVE'); w(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+    v.setUint32(24, 44100, true); v.setUint32(28, 88200, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+    w(36, 'data'); v.setUint32(40, n * 2, true);
+    return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+  }
+
+  async function play() {
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    if (!ctx) {
+      ctx = new AC();
+      box = createMusicBox(ctx);
+      box.master.gain.value = 0;
+      box.reset(ctx.currentTime + 0.25);
+    }
+    if (isIOS && !navigator.audioSession && !keepAlive) {
+      try { keepAlive = new Audio(silentWav()); keepAlive.loop = true; } catch (e) {}
+    }
+    if (keepAlive) keepAlive.play().catch(() => {});
+    await ctx.resume();
+    box.master.gain.cancelScheduledValues(ctx.currentTime);
+    box.master.gain.setTargetAtTime(0.95, ctx.currentTime, 0.25); // 천천히 커지게
+    box.schedule(ctx.currentTime + 0.8);
+    clearInterval(timer);
+    timer = setInterval(() => box.schedule(ctx.currentTime + 0.8), 200);
+    setUi(true);
+  }
+
+  function pause() {
+    setUi(false);
+    clearInterval(timer);
+    timer = null;
+    if (keepAlive) keepAlive.pause();
+    if (!ctx) return;
+    box.master.gain.cancelScheduledValues(ctx.currentTime);
+    box.master.gain.setTargetAtTime(0, ctx.currentTime, 0.08); // 천천히 작아지게
+    setTimeout(() => { if (!playing) ctx.suspend(); }, 400);
+  }
+
+  btn.addEventListener('click', () => {
+    if (playing) pause();
+    else play().catch(() => { setUi(false); label.textContent = '소리를 켤 수 없습니다'; });
+  });
+  // 다른 앱으로 넘어가면 멈춤 (다시 들으려면 버튼을 한 번 더)
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
 })();
 </script>
 </body>
